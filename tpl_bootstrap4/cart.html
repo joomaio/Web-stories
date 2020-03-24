@@ -1,0 +1,192 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Cart</title>
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
+
+        <!-- Bootstrap core CSS -->
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+            }
+        }
+        </style>
+        <!-- Custom styles for this template -->
+        <link href="./css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="#"><img class="logo" src="./img/dummylogo.png"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav ml-auto mr-3">
+                            <li class="nav-item">
+                                <a class="nav-link" href="./index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./shop.html">Shop</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="./cart.html">Cart <span class="badge badge-primary">1</span> <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./login.html">Login</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline mt-2 mt-md-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+            <div class="album bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 order-lg-12">
+                            <div class="row mt-4">
+                                <div class="col-md-4 order-md-2 mb-4">
+                                  <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="text-muted">Your cart</span>
+                                    <span class="badge badge-secondary badge-pill">3</span>
+                                  </h4>
+                                  <ul class="list-group mb-3">
+                                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                      <div>
+                                        <div class="quantity">
+                                            <button class="btn btn-danger btn-sm btn-clear float-right" type="button">&times;</button>
+                                            <h6 class="mt-0 mb-2">Aliquam dictum justo sapien, vel mollis libero euismod sit amet</h6>
+                                            <span class="text-muted float-right">$39</span>
+                                            <input class="form-control cart-qty" min="1" name="qty" step="1" type="number" value="1"></div>
+                                      </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                      <div>
+                                        <div class="quantity">
+                                            <button class="btn btn-danger btn-sm btn-clear float-right" type="button">&times;</button>
+                                            <h6 class="mt-0 mb-2">Aliquam dictum justo sapien, vel mollis libero euismod sit amet</h6>
+                                            <span class="text-muted float-right">$39</span>
+                                            <input class="form-control cart-qty" min="1" name="qty" step="1" type="number" value="1"></div>
+                                      </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                      <span>Total (USD)</span>
+                                      <strong>$20</strong>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="col-md-8 order-md-1">
+                                  <h4 class="mb-3">Billing address</h4>
+                                    <form class="needs-validation" novalidate="">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="firstName">Name</label>
+                                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                                                <div class="invalid-feedback">
+                                                Valid first name is required.
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="lastName">Phone</label>
+                                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                                                <div class="invalid-feedback">
+                                                Valid last name is required.
+                                                </div>
+                                            </div>
+                                        </div>                                
+                                
+                                        <div class="mb-3">
+                                            <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                                            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                                        </div>
+                                
+                                        <div class="mb-3">
+                                            <label for="address">Shipped to</label>
+                                            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="address">Note</label>
+                                            <textarea class="form-control" rows="3"></textarea>
+                                        </div>
+                                
+                                        <hr class="mb-4">
+                                        <h4 class="mb-3">Payment</h4>                                
+                                        <div class="d-block my-3">
+                                            <div class="custom-control custom-radio">
+                                                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+                                                <label class="custom-control-label" for="credit">Credit card</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                                                <label class="custom-control-label" for="debit">Debit card</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                                                <label class="custom-control-label" for="paypal">PayPal</label>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-4">
+                                        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 order-lg-1">
+                            <div class="sidebar">
+                                <div class="widget">
+                                    <h1 class="my-4">Web Stories</h1>
+                                    <div class="nav flex-column list-group mb-5">
+                                        <a class="list-group-item list-group-item-action" href="#">Category 1</a>
+                                        <a class="list-group-item list-group-item-action" href="#">Category 2</a>
+                                        <a class="list-group-item list-group-item-action" href="#">Category 3</a>
+                                        <a class="list-group-item list-group-item-action" href="#">Category 4</a>
+                                        <a class="list-group-item list-group-item-action" href="#">Category 5</a>
+                                        <a class="list-group-item list-group-item-action" href="#">Category 6</a>
+                                        <a class="list-group-item list-group-item-action" href="#">Category 7</a>
+                                        <a class="list-group-item list-group-item-action" href="#">Category 8</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </main>
+
+        <footer class="text-muted">
+            <div class="container">
+                <p class="float-right">
+                    <a href="#">Back to top</a>
+                </p>
+                <p>2020 &copy; WebStories</p>
+            </div>
+        </footer>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="./js/jquery-3.4.1.slim.min.js"></script>
+        <script src="./js/popper.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+    </body>
+</html>

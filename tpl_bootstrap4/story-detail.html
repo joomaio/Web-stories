@@ -1,0 +1,130 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</title>
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
+
+        <!-- Bootstrap core CSS -->
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+            }
+        }
+        </style>
+        <!-- Custom styles for this template -->
+        <link href="./css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="#"><img class="logo" src="./img/dummylogo.png"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav ml-auto mr-3">
+                            <li class="nav-item">
+                                <a class="nav-link" href="./index.html">Home</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="./shop.html">Shop <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./cart.html">Cart <span class="badge badge-primary">1</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./login.html">Login</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline mt-2 mt-md-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+            <div class="album bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 order-lg-12">
+                            <div class="row my-4" *ngIf="story">
+                                <div class="col-md-6">
+                                    <img class="img-thumbnail mb-3" src="./img/dummy.jpg">
+                                </div>
+                                <div class="col-md-6">
+                                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                                    <hr>
+                                    <div class="text-muted mb-3">99 in stock</div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <input type="number" class="form-control" name="storyQty" value="1"> 
+                                        </div>
+                                        <div class="col-6">
+                                            <button type="button" class="btn btn-primary">Add to cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">        
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque felis neque, viverra vitae interdum id, euismod ut mi. Vestibulum egestas mauris at nulla mollis, vel ultrices felis aliquam. Etiam interdum metus a leo ultrices pellentesque. Sed pretium ullamcorper facilisis. Nulla facilisi. Donec eleifend quis erat a facilisis. Donec varius mauris justo, non tempus nulla tincidunt at.</p>
+                                    <p>Vivamus hendrerit arcu a massa lobortis, nec rutrum libero viverra. Sed a bibendum enim. Vivamus dignissim elit eu ligula porttitor, et vulputate arcu lobortis. Fusce non feugiat erat. Aliquam mattis mollis tortor, a ullamcorper purus eleifend gravida. Ut eleifend ornare dui eu suscipit. Nam sit amet felis lacus. In sed sapien ac dolor porttitor molestie vel vitae magna. Duis ultricies ligula a est tincidunt, id eleifend risus malesuada. Nullam a est vel odio vestibulum hendrerit id non orci. Vivamus mattis dictum nibh dapibus sagittis. Sed accumsan bibendum volutpat. Nulla eget nisi eu ex pharetra ullamcorper. Phasellus quis interdum elit. Curabitur in neque condimentum odio feugiat congue ut eu justo.</p>
+                                    <p>Maecenas et tellus quis sapien interdum fringilla a quis sem. Nunc vel ligula velit. Integer quis nibh sit amet leo tempus rhoncus quis id magna. Cras in metus ipsum. Pellentesque et urna justo. Quisque ac dignissim est. Quisque suscipit tincidunt felis, sed ultrices massa sodales et. Nulla elit odio, porta vel libero eget, sagittis tempor nulla. Aliquam erat volutpat. Nullam pretium lacinia tellus, vitae vestibulum mi sollicitudin suscipit.</p>
+                                    <p>Vestibulum lorem mi, efficitur in faucibus a, sagittis eu ex. Donec quis varius justo. Nulla facilisi. Curabitur vulputate, sem quis tempus malesuada, purus felis blandit lectus, sit amet bibendum lorem dolor quis urna. Sed tellus purus, auctor at odio quis, interdum volutpat mi. Nulla gravida mollis enim at fringilla. Maecenas ultricies fermentum odio nec congue. Suspendisse in elit luctus, dapibus mi eget, lobortis turpis. Donec efficitur tortor odio, eget placerat lorem aliquam non.</p>
+                                    <p>Aliquam interdum et lorem at dapibus. Donec laoreet urna eu quam pulvinar blandit. Nulla luctus commodo venenatis. Morbi at lorem sem. Phasellus viverra condimentum neque. Ut auctor elit leo, et vulputate magna molestie quis. Aenean tortor ligula, sagittis sed ipsum sit amet, luctus pretium orci. Duis eleifend neque dui, sit amet accumsan ligula faucibus sit amet. Sed ullamcorper quis ante sit amet fringilla.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 order-lg-1">
+                            <div class="sidebar">
+                                <div class="widget">
+                                    <h1 class="my-4">Web Stories</h1>
+                                    <div class="nav flex-column list-group mb-5">
+                                        <a class="list-group-item list-group-item-action" href="#">Category 1</a>
+                                        <a class="list-group-item list-group-item-action" href="#">Category 2</a>
+                                        <a class="list-group-item list-group-item-action" href="#">Category 3</a>
+                                        <a class="list-group-item list-group-item-action" href="#">Category 4</a>
+                                        <a class="list-group-item list-group-item-action" href="#">Category 5</a>
+                                        <a class="list-group-item list-group-item-action" href="#">Category 6</a>
+                                        <a class="list-group-item list-group-item-action" href="#">Category 7</a>
+                                        <a class="list-group-item list-group-item-action" href="#">Category 8</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </main>
+
+        <footer class="text-muted">
+            <div class="container">
+                <p class="float-right">
+                    <a href="#">Back to top</a>
+                </p>
+                <p>2020 &copy; WebStories</p>
+            </div>
+        </footer>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="./js/jquery-3.4.1.slim.min.js"></script>
+        <script src="./js/popper.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+    </body>
+</html>

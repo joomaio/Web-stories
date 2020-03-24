@@ -1,0 +1,72 @@
+/*---GENERAL---*/
+
+.sidebar .widget .nav-item .nav-link.active{
+  font-weight: 700;
+}
+img.logo{
+  max-width: 150px;
+}
+input[type=number].cart-qty {
+  -moz-appearance: textfield;
+  text-align: center;
+  max-width: 80px;
+}
+table th{
+  white-space: nowrap;
+}
+.return-invoice .invoice-title h2, .invoice-title h3 {
+    display: inline-block;
+}
+
+.return-invoice .table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.return-invoice .table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.return-invoice .table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
+
+
+/*---HOME PAGE---*/
+.jumbotron {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron h1 {
+  font-weight: 300;
+}
+
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+.sidebar .widget .nav li.nav-item{
+  border-bottom: 1px solid #eee;
+}
+
+.sidebar .widget .nav li.nav-item .nav-link {
+  padding-left: 0;
+}

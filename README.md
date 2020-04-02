@@ -1,3 +1,3 @@
 # web-stories
 
-# Tú test role
+This repository we practise all the technologies

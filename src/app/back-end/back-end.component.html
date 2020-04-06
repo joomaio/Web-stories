@@ -1,0 +1,38 @@
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" [routerLink]="['']">WebStories</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/admin/cat/page/1']" [routerLinkActive]="['active']">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/admin/story/page/1']" [routerLinkActive]="['active']">Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/admin/orders']" [routerLinkActive]="['active']">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="" (click)="logout()">Log out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>  
+<router-outlet></router-outlet>
+<footer class="text-muted">
+    <div class="container">
+        <p class="float-right">
+            <a style="cursor: pointer;" onclick="window.scrollTo(0, 0)"> Back to top</a>
+        </p>
+        <p>2020 &copy; Web Stories</p>
+    </div>
+</footer>

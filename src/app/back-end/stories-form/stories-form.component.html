@@ -1,0 +1,70 @@
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="search-result">
+            <div class="row">
+                <div class="col-12">
+
+                    <form *ngIf="getCheckAdd()" class="w-50" #create="ngForm"
+                        (ngSubmit)="onSubmitAdd(create.value)">
+                        <h2 class="mb-3">Add new Story</h2>
+                        <div class="form-group">
+                            <label for="inputEmail4">Name:</label>
+                            <input type="email" class="form-control"
+                                id="inputEmail4" name="name" ngModel>
+                        </div>
+                        <div class="form-group">
+                            Category:
+                            <select name="cat" class="custom-select" ngModel>
+                                <option *ngFor="let cat of categories">{{cat.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword4">Content:</label>
+                            <textarea rows="4" class="form-control"
+                                id="inputPassword3" name="content" ngModel></textarea>
+                        </div>
+                        <div>
+                            <span>Feature image:</span>
+                            <input type="file" name="fileToUpload">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </form>
+
+                    <form *ngIf="getCheckEdit()" class="w-50" #create="ngForm"
+                        (ngSubmit)="onSubmitEdit(create.value)">
+                        <h2 class="mb-3">Edit Story</h2>
+                        <div class="form-group">
+                            <label for="inputEmail4">Name:</label>
+                            <input type="text"
+                                [ngModel]="editStory.name"
+                                name="name" class="form-control" id="name"
+                                required>
+                           
+                        </div>
+                        <div class="form-group">
+                            Category:   
+                            <select name="id_cat" class="custom-select">
+                                <option>{{catName}}</option>
+                                <option *ngFor="let cat of categories">{{cat.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword4">Content:</label>
+                            <textarea rows="4" class="form-control"
+                            [ngModel]="editStory.content"
+                            id="content" name="content" required>
+                            </textarea>
+                        </div>
+                        <div>
+                            <span>Feature image:</span>
+                            <input type="file" name="fileToUpload">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

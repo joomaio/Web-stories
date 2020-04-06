@@ -1,0 +1,68 @@
+
+
+
+
+
+
+/*---HOME PAGE---*/
+.jumbotron {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron h1 {
+  font-weight: 300;
+}
+
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+.sidebar .widget .nav li.nav-item {
+  border-bottom: 1px solid #eee;
+}
+
+.sidebar .widget .nav li.nav-item .nav-link {
+  padding-left: 0;
+}
+
+form.select-items .bootstrap-select.form-control {
+  border: 1px solid rgba(0,0,0,.15);
+  width: 70%!important;
+}
+.bootstrap-select .dropdown-menu{
+  right: 0;
+  left: auto!important;
+}
+
+@media print{
+  .album .secondarycontent{
+    display: none;
+  }
+  .album .primarycontent{
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .noprint{
+    display: none;
+  }
+}

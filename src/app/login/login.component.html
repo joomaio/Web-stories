@@ -1,0 +1,41 @@
+<div id="id01" class="modal">
+    <form class="modal-content animate" [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()">
+
+      <div class="container">
+        <div id="username">
+          <label for="uname"><b>Username</b></label> 
+          <input type="text" name="username" formControlName="username" class="form-control" placeholder="Enter Username"
+          [ngClass]="{ 'is-invalid': f.username.errors }">
+          <div *ngIf="f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+            <div *ngIf="f.username.errors.minlength">Username must be at least 4 characters</div>
+            <div *ngIf="f.username.errors.maxlength">Username must be at most 15 characters</div>
+          </div>
+        </div>
+        
+        <div id="password">
+          <label for="psw"><b>Password</b></label>
+          <input type="password" name="psw" formControlName="password" class="form-control" placeholder="Enter Password"
+          [ngClass]="{ 'is-invalid': f.password.errors }">
+          <div *ngIf="f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 4 characters</div>
+            <div *ngIf="f.password.errors.maxlength">Password must be at most 15 characters</div>
+          </div>
+        </div>
+        
+        <button [disabled]="f.username.errors || f.password.errors" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Login
+        </button>
+      </div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button"
+          onclick="document.getElementById('id01').style.display='none'"
+          class="cancelbtn">Cancel</button>
+
+      </div>
+    </form>
+  </div>

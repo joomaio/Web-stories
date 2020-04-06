@@ -1,0 +1,96 @@
+<div class="card my-5" *ngIf="hasInvoice; else noInvoice">
+    <div class="card-header">
+        Invoice
+        <strong>{{datenow | date:'short' }}</strong> 
+        <span class="float-right"> <strong>Status:</strong> {{invoice.orderStatus}}</span>                  
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-2">
+                <p class="mb-0"><strong>Shipped To:</strong></p>
+            </div>                  
+            <div class="col-sm-4">
+                <p class="mb-0"><strong>{{invoice.orderName}}</strong></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <p class="mb-0">Address:</p>
+            </div>                  
+            <div class="col-sm-4">
+                <p class="mb-0">{{invoice.orderAddress}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <p class="mb-0">Email:</p>
+            </div>                  
+            <div class="col-sm-4">
+                <p class="mb-0">{{invoice.orderEmail}}</p>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-sm-2">
+                <p class="mb-0">Phone:</p>
+            </div>                  
+            <div class="col-sm-4">
+                <p class="mb-0">{{invoice.orderPhone}}</p>
+            </div>
+        </div>
+        <div class="table-responsive-sm">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th>Item</th>                                           
+                        <th class="text-center">Unit Cost</th>
+                        <th class="text-center">Qty</th>
+                        <th class="text-right">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of stories">
+                        <td class="text-center">1</td>
+                        <td class="text-left strong">{{item.name}}</td>                                          
+                        <td class="text-center">{{item.price}}</td>
+                        <td class="text-center">{{item.qty}}</td>
+                        <td class="text-right">{{item.total}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">                             
+            <div class="col-sm-5 ml-auto">
+                <table class="table table-clear">
+                    <tbody>
+                        <tr>
+                            <td class="left">
+                                <strong>Subtotal</strong>
+                            </td>
+                            <td class="text-right">${{cartSubTotal}}</td>
+                        </tr>
+                        <tr>
+                            <td class="left">
+                                <strong>VAT (10%)</strong>
+                            </td>
+                            <td class="text-right">${{cartSubTotal*0.1 | number}}</td>
+                        </tr>
+                        <tr>
+                            <td class="left">
+                                <strong>Total</strong>
+                            </td>
+                            <td class="text-right">
+                                <strong>${{cartSubTotal*1.1 | number}}</strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>                              
+            </div>                              
+        </div>                              
+    </div>
+    <div class="card-footer text-right noprint">
+        <a [routerLink]="['/']" class="btn btn-secondary mr-1">Go Home</a>
+        <button type="button" class="btn btn-primary" (click)="printInvoice()">Print Invoice</button>
+    </div>
+</div>
+<ng-template #noInvoice><div class="mt-5">There's no invoice. Please choose your stories, add them to cart, then checkout to get the invoice.</div></ng-template>

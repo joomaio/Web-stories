@@ -1,0 +1,104 @@
+<main role="main">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <form class="order-create needs-validation" novalidate #order="ngForm" (ngSubmit)="order.form.valid && onAddOrEdit(order.value)">
+                <div class="row">
+                    <div class="col-md-4 order-md-2 mb-4">
+                        <h4 class="mb-3">Status</h4>               
+                        <select class="form-control" name="orderStatus" #orderStatus="ngModel" [ngClass]="{ 'is-invalid': order.submitted && orderStatus.invalid }" [ngModel]="editOrder.status" required>
+                            <option value="processing">Processing</option>
+                            <option value="paid">Paid</option>
+                            <option value="completed">Completed</option>
+                        </select>                       
+                        <div *ngIf="order.submitted && orderStatus.invalid" class="invalid-feedback">
+                            <div *ngIf="orderStatus.errors.required">Status is required</div>
+                        </div>
+                        <hr class="mb-4">        
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-muted1">Select items</span>
+                        </h4>                        
+                        <form class="select-items needs-validation form-inline mb-3" novalidate #items="ngForm" (ngSubmit)="onSelectItemsSubmit(items.value)">
+                            <select class="form-control selectpicker show-tick" data-live-search="true" ngModel name="selected">
+                                <option *ngFor="let item of listItems" [value]="item | json">
+                                    {{item.name}}
+                                </option>
+                            </select>
+                            <button type="submit" class="btn btn-primary ml-auto">Add item</button>  
+                        </form>
+                        <fieldset>
+                            <ul class="list-group mb-3">
+                                <li class="list-group-item" *ngFor="let story of selectedItems">
+                                    <fieldset>
+                                        <div class="quantity">
+                                            <button type="button" class="btn btn-danger btn-sm btn-clear float-right" (click)="deleteStory(story.id)">&times;</button>
+                                            <h6 class="mt-0 mb-2">{{story.name}}</h6>
+                                            <span class="text-muted float-right">${{story.price*story.selectedQty}}</span>
+                                            <input type="number" [(ngModel)]="story.selectedQty" (change)="updateQty(story.id,story.selectedQty)" [ngModelOptions]="{standalone:true}" name="qty" class="form-control form-control-sm" min="1" max="{{story.quantity}}" step="1">
+                                        </div>
+                                    </fieldset>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>Total (USD)</span>
+                                    <strong>${{cartSubTotal}}</strong>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>VAT (10%)</span>
+                                    <span>${{cartSubTotal*0.1 | number}}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <strong>Total</strong>
+                                    <strong>${{afterTax}}</strong>
+                                </li>
+                            </ul>
+                        </fieldset>
+                        <input type="hidden" [(ngModel)]="afterTax" name="orderTotal" > 
+                    </div>
+                    <div class="col-md-8 order-md-1">
+                        <h4 class="mb-3">Billing address</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name">Name <span class="text-danger">*</span></label>
+                                <input type="text" [ngModel]="editOrder.customer_name" name="orderName" #orderName="ngModel" [ngClass]="{ 'is-invalid': order.submitted && orderName.invalid }" class="form-control" id="name" placeholder="Name" required>
+                                <div *ngIf="order.submitted && orderName.invalid" class="invalid-feedback">
+                                    <div *ngIf="orderName.errors.required">Name is required</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone">Phone <span class="text-danger">*</span></label>
+                                <input type="tel" [ngModel]="editOrder.phone" name="orderPhone" #orderPhone="ngModel" [ngClass]="{ 'is-invalid': order.submitted && orderPhone.invalid }" class="form-control" id="phone" placeholder="Phone" pattern="[0-9]*" required>
+                                <div *ngIf="order.submitted && orderPhone.invalid" class="invalid-feedback">
+                                    <div *ngIf="orderPhone.errors.required">Phone is required</div>
+                                    <div *ngIf="orderPhone.errors?.pattern">Phone number is invalid</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email">Email <span class="text-danger">*</span></label>
+                            <input type="email" [ngModel]="editOrder.email" name="orderEmail" #orderEmail="ngModel" [ngClass]="{ 'is-invalid': order.submitted && orderEmail.invalid }" class="form-control" id="email" placeholder="you@example.com" required>
+                            <div *ngIf="order.submitted && orderEmail.invalid" class="invalid-feedback">
+                                <div *ngIf="orderEmail.errors.required">Email is required</div>
+                                <div *ngIf="orderEmail.errors?.email">Email is invalid</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address">Address <span class="text-danger">*</span></label>
+                            <input type="text" [ngModel]="editOrder.address" name="orderAddress" #orderAddress="ngModel" [ngClass]="{ 'is-invalid': order.submitted && orderAddress.invalid }" class="form-control" id="address" placeholder="1234 Main St" required>
+                            <div *ngIf="order.submitted && orderAddress.invalid" class="invalid-feedback">
+                                <div *ngIf="orderAddress.errors.required">Address is required</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="messege">Note <span class="text-muted">(Optional)</span></label>
+                            <textarea [ngModel]="editOrder.note" name="orderMessege" class="form-control" id="messege" placeholder="Note..."></textarea>
+                        </div>
+                        <hr class="mb-4">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            <span *ngIf="editOrder.id else createNewOrder">Save changes</span>
+                            <ng-template #createNewOrder>Create new Order</ng-template>
+                        </button>        
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>        
+</main>

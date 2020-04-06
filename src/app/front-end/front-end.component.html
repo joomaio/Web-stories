@@ -1,0 +1,148 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['']">
+        <span *ngIf="!isShop; else logo">WebStories</span>
+        <ng-template #logo><img class="logo" src="/assets/img/dummy-logo.png"></ng-template>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle
+        navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto mr-3">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/shop']" [routerLinkActive]="['active']">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/cart']" [routerLinkActive]="['active']">Cart <span class="badge badge-primary" *ngIf="cartCount()>0">{{cartCount()}}</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"
+              onclick="document.getElementById('id01').style.display='block'"
+              style="width:auto;">Login</a>
+          </li>
+        </ul>
+        <div class="form-inline mt-2 mt-md-0">
+          <form (ngSubmit)="search.form.valid && onSearchSubmit(s.value)" #search="ngForm" novalidate>
+            <input type="text" class="form-control" name="s" ngModel #s="ngModel" [ngClass]="{ 'is-invalid': search.submitted && s.invalid }" placeholder="Search..." required>
+            <button type="submit" class="btn btn-primary ml-2 my-2 my-sm-0">Search</button>        
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<main role="main" class="bg-light">
+  <section class="jumbotron text-center" *ngIf="isHome;">
+    <div class="container">
+      <h1>Website stories</h1>
+      <p class="lead text-muted">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non libero quam. Maecenas at nunc eget diam ultricies ultricies. Duis vitae interdum erat, sit amet tincidunt neque.
+      </p>
+    </div>
+  </section>
+  
+  <div id="id01" class="modal">
+    <form class="modal-content animate" [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()">
+
+      <div class="container">
+        <div id="username">
+          <label for="uname"><b>Username</b></label> 
+          <input type="text" name="username" formControlName="username" class="form-control" placeholder="Enter Username"
+          [ngClass]="{ 'is-invalid':submitted && f.username.errors }">
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+            <div *ngIf="f.username.errors.minlength">Username must be at least 4 characters</div>
+            <div *ngIf="f.username.errors.maxlength">Username must be at most 15 characters</div>
+          </div>
+        </div>
+        
+        <div id="password">
+          <label for="psw"><b>Password</b></label>
+          <input type="password" name="psw" formControlName="password" class="form-control" placeholder="Enter Password"
+          [ngClass]="{ 'is-invalid':submitted && f.password.errors }">
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 4 characters</div>
+            <div *ngIf="f.password.errors.maxlength">Password must be at most 15 characters</div>
+          </div>
+        </div>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">
+          Username or password is incorrect
+        </div>
+        
+        <button [disabled]="f.username.errors || f.password.errors" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Login
+        </button>
+      </div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button"
+          onclick="document.getElementById('id01').style.display='none'"
+          class="cancelbtn">Cancel</button>
+
+      </div>
+    </form>
+  </div>
+
+  <script>
+  // Get the modal
+  var modal = document.getElementById('id01');
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+  </script>
+  <div class="album " [ngClass]="{'py-5':!isShop}">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 order-md-12 primarycontent">
+          <router-outlet (activate)="onActivate($event)"></router-outlet>
+        </div>
+        <div class="col-md-3 order-md-1 secondarycontent">
+          <div class="sidebar">
+            <div class="widget" *ngIf="isShop; else homeSidebar">
+              <h1 class="my-4">Web Stories</h1>
+              <div class="nav flex-column list-group mb-5">
+                <a class="list-group-item list-group-item-action" *ngFor="let cat of categories" [routerLink]="['/cat', cat.id]" [routerLinkActive]="['active']">{{
+                  cat.name
+                  }}</a>
+              </div>
+            </div>
+            <ng-template #homeSidebar>
+              <div class="widget">
+                <h4>Categories</h4>
+                <ul class="nav flex-column">
+                  <li class="nav-item" *ngFor="let cat of categories">
+                    <a class="nav-link" [routerLink]="['/cat', cat.id]" [routerLinkActive]="['active']">{{
+                      cat.name
+                      }}</a>
+                  </li>
+                </ul>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="text-muted noprint">
+  <div class="container">
+    <p class="float-right">
+      <a style="cursor: pointer;" onclick="window.scrollTo(0, 0)"> Back to top</a>
+    </p>
+    <p>2020 &copy; Web Stories</p>
+  </div>
+</footer>

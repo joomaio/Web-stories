@@ -1,0 +1,57 @@
+<div class="search-result" *ngIf="stories?.length">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Created at</th>
+                        <th scope="col">Created by</th>
+                        <th scope="col">Last modified at</th>
+                        <th scope="col">Last modified by</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let story of stories">
+                        <td>{{story.id}}</td>
+                        <td>{{story.catname}}</td>
+                        <td>{{story.name}}</td>
+                        <td>{{story.created_time}}</td>
+                        <td>{{story.create_user_name}}</td>
+                        <td>{{story.last_modified_time}}</td>
+                        <td>{{story.last_modified_user_name}}</td>
+                        <td><a (click)="deleteStory(story)" class="badge
+                                badge-danger mr-1">Delete</a>
+                            <a [routerLink]="['/admin/story', story.id]" class="badge badge-success"
+                                (click)="showEditStoryForm(story)">Edit</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li>
+                        <button type="button" class="page-link" [routerLink]="['/admin/story/page', 1]">
+                            First
+                        </button>
+                    </li>
+                    <li *ngFor="let element of pages" class="page-item" [ngClass]="{ active: element == currentPage }">
+                        <button class="page-link" [routerLink]="['/admin/story/page', element]"
+                            *ngIf="element > 0; else spanPaginate">
+                            {{ element }}
+                        </button>
+                        <ng-template #spanPaginate><span class="page-link">...</span></ng-template>
+                    </li>
+                    <li>
+                        <button type="button" class="page-link" [routerLink]="['/admin/story/page', numberOfPages]">
+                            Last
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

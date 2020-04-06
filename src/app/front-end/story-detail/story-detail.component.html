@@ -1,0 +1,22 @@
+<div class="row my-4" *ngIf="story">
+    <div class="col-md-6">
+        <img class="img-thumbnail mb-3" [src]="story.feature_img">
+    </div>
+    <div class="col-md-6">
+        <h2>{{story.name}}</h2>
+        <hr>
+        <div class="text-muted mb-3" *ngIf="story.quantity>0 else outOfStock">{{story.quantity}} in stock</div>
+        <ng-template #outOfStock><div class="mb-3">Out of stock</div></ng-template>
+        <div class="row">
+            <div class="col-6">
+                <input type="number" class="form-control" name="storyQty" [(ngModel)]="selectedQty" min="1" max="{{story.quantity}}"> 
+            </div>
+            <div class="col-6">
+                <button type="button" class="btn btn-primary" [disabled]="isDisabled" (click)="addToCart(story.id,selectedQty)">Add to cart</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">        
+        <p class="story-content">{{story.content}}</p>
+    </div>
+</div>

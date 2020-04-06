@@ -1,0 +1,57 @@
+<div class="search-result">
+    <div class="row">
+        <div class="col-12">
+            <!-- <h2 class="d-inline-block">List of Category</h2> -->
+            <!-- <a [routerLink]="['/admin/cat/0']" class="btn btn-primary
+                float-right" (click)="showAddCatForm()">Add new</a> -->
+        </div>
+        <div class="col-12">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cat of result; let i = index">
+                        <td>{{ cat.id }}</td>
+                        <td>{{ cat.name }}</td>
+                        <td>{{ cat.description }}</td>
+                        <td>
+                            <button (click)="deleteCategory(cat)" class="badge badge-danger mr-1">
+                                Delete
+                            </button>
+                            <a [routerLink]="['/admin/cat', cat.id]" (click)="showEditCatForm(cat)"
+                                class="badge badge-success">Edit</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li>
+                        <button type="button" class="page-link" [routerLink]="['/admin/cat/search/', keyWord, 1]">
+                            First
+                        </button>
+                    </li>
+                    <li *ngFor="let element of pages" class="page-item" [ngClass]="{ active: element == currentPage }">
+                        <button class="page-link" [routerLink]="['/admin/cat/search/', keyWord, element]"
+                            *ngIf="element > 0; else spanPaginate">
+                            {{ element }}
+                        </button>
+                        <ng-template #spanPaginate><span class="page-link">...</span></ng-template>
+                    </li>
+                    <li>
+                        <button type="button" class="page-link"
+                            [routerLink]="['/admin/cat/search/', keyWord, numberOfPages]">
+                            Last
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

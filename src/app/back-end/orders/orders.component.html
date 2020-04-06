@@ -1,0 +1,56 @@
+<main role="main">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="search-result">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="d-inline-block">List of Orders</h2> 
+                        <a [routerLink]="['/admin/order/create']" class="btn btn-primary float-right ml-3">Add new</a>
+                        <form class="float-right form-inline" #filter="ngForm" (ngSubmit)="onFilterSubmit(filter.value)" novalidate>
+                            <label for="inputZip1">From</label>
+                            <input type="date" class="form-control mx-2" id="inputZip1" name="from_date" [(ngModel)]="fitlerDateFrom">
+                            <label for="inputZip2">To</label>
+                            <input type="date" class="form-control mx-2" id="inputZip2" name="to_date" [(ngModel)]="filterDateTo">    
+                            <button type="submit" class="btn btn-primary">Filter</button>                        
+                        </form>   
+                    </div>     
+                    <div class="col-12">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Customer's name</th>
+                                    <th scope="col">Created at</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let order of orders">
+                                    <th scope="row">{{order.id}}</th>
+                                    <td>{{order.customer_name}}</td>
+                                    <td>{{order.created_time}}</td>
+                                    <td>${{order.total | number}}</td>
+                                    <td>{{order.status}}</td>
+                                    <td><span (click)="deleteOrder(order.id)" class="btn badge badge-danger mr-1">Delete</span>
+                                        <a routerLink="/admin/order/{{order.id}}" class="badge badge-success">Edit</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <li><button type="button" class="page-link" (click)="onClickPagination(1)">First</button></li>
+                                <li *ngFor="let element of numberOfPages" class="page-item" [ngClass]="{'active':element == currentPage}">
+                                    <button type="button" class="page-link" (click)="onClickPagination(element)">{{element}}</button>
+                                </li>
+                                <li><button type="button" class="page-link" (click)="onClickPagination(numberOfPages.length)">Last</button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>        
+</main>

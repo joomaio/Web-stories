@@ -1,0 +1,45 @@
+[
+    {
+      "id": "1",
+      "name": "Trường học",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "status": "publish"
+    },
+    {
+      "id": "2",
+      "name": "Bệnh viện",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "status": "publish"
+    },
+    {
+      "id": "3",
+      "name": "Giao thông",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "status": "publish"
+    },
+    {
+      "id": "4",
+      "name": "Xã hội",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "status": "publish"
+    },
+    {
+      "id": "5",
+      "name": "Giáo viên",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "status": "publish"
+    },
+    {
+      "id": "6",
+      "name": "Gia Đình",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "status": "publish"
+    },
+    {
+      "id": "7",
+      "name": "Sinh viên",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "status": "publish"
+    }
+  ]
+  

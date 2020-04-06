@@ -1,0 +1,67 @@
+<div class="search-form mb-5">
+    <h2>Search</h2>
+    <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="inputCity">Search for:</label>
+                <input type="text" class="form-control" id="inputCity" name="s" [(ngModel)]="searchText" #s="ngModel" [ngClass]="{ 'is-invalid': f.submitted && s.invalid }" required>
+                <div *ngIf="f.submitted && s.invalid" class="invalid-feedback">
+                    <div *ngIf="s.errors.required">Keyword is required</div>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputState">Category:</label>
+                <select id="inputState" class="form-control" name="cate" [(ngModel)]="filterCategory">
+                    <option value="0">Choose...</option>
+                    <option *ngFor="let category of categories" [value]="category.id">
+                        {{ category.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputZip1">From</label>
+                <input type="date" class="form-control" id="inputZip1" name="from_date" [(ngModel)]="filterDateFrom">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputZip2">To</label>
+                <input type="date" class="form-control" id="inputZip2" name="to_date" [(ngModel)]="filterDateTo">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+<div class="search-result" *ngIf="storiesResult?.length != 0; else noResult">
+    <div class="row">
+        <div class="col-12">
+            <h2>Result for: {{keyResult}}</h2>                                        
+        </div>     
+        <div class="col-lg-4" *ngFor="let story of storiesResult">
+            <div class="card mb-4 shadow-sm">
+                <img src="{{story.feature_img}}" width="100%" height="100%" >
+                <div class="card-body">
+                    <h5 class="mb-0">
+                        <a [routerLink]="['/story', story.id]">{{
+                            story.name
+                            }}</a>
+                    </h5>
+                    <small class="text-muted">{{story.created_time}}</small>
+                    <p class="card-text">{{truncate(story.content,20)}}</p>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li><button type="button" class="page-link" (click)="onClickPagination(1)">First</button></li>
+            <li *ngFor="let element of pagination" class="page-item" [ngClass]="{'active':element == currentPage, 'disabled':element<0}">
+                <button type="button" class="page-link" (click)="onClickPagination(element)" *ngIf="element>0; else spanPaginate">{{element}}</button>
+                <ng-template #spanPaginate><span class="page-link">...</span></ng-template>
+            </li>
+            <li><button type="button" class="page-link" (click)="onClickPagination(numberOfPages.length)">Last</button>
+            </li>
+        </ul>
+    </nav>
+</div>
+<ng-template #noResult>
+    <h2>No result for: {{keyResult}}</h2>     
+</ng-template>

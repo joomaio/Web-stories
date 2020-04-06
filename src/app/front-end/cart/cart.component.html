@@ -1,0 +1,100 @@
+<div class="mt-4 mb-5" *ngIf="items.length>0; else noItems">
+    <form class="needs-validation" novalidate #order="ngForm" (ngSubmit)="order.form.valid && onSubmit(order.value)">
+        <div class="row">
+            <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Your cart</span>
+                    <span class="badge badge-secondary badge-pill">{{cartCount()}}</span>
+                  </h4>
+                <fieldset>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item" *ngFor="let story of stories">
+                            <fieldset>
+                                <div class="quantity">
+                                    <button type="button" class="btn btn-danger btn-sm btn-clear float-right" (click)="deleteStory(story.id)">&times;</button>
+                                    <h6 class="mt-0 mb-2">{{story.name}}</h6>
+                                    <span class="text-muted float-right">${{story.price*story.selectedQty}}</span>
+                                    <input type="number" [(ngModel)]="story.selectedQty" (change)="updateQty(story.id,story.selectedQty)" name="qty" class="form-control form-control-sm" min="1" max="{{story.quantity}}" step="1">
+                                </div>
+                            </fieldset>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>SubTotal (USD)</span>
+                            <span>${{cartSubTotal}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>VAT (10%)</span>
+                            <span>${{cartSubTotal*0.1 | number}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <strong>Total</strong>
+                            <strong>${{afterTax}}</strong>
+                        </li>
+                    </ul>
+                </fieldset>
+                <input type="hidden" [(ngModel)]="afterTax" name="orderTotal" >
+            </div>
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">Billing address</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="name">Name <span class="text-danger">*</span></label>
+                        <input type="text" ngModel name="orderName" class="form-control" id="name" placeholder="Name" #orderName="ngModel" [ngClass]="{ 'is-invalid': order.submitted && orderName.invalid }" required>
+                        <div *ngIf="order.submitted && orderName.invalid" class="invalid-feedback">
+                            <div *ngIf="orderName.errors.required">Name is required</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="phone">Phone <span class="text-danger">*</span></label>
+                        <input type="tel" ngModel name="orderPhone" class="form-control" id="phone" placeholder="Phone" pattern="[0-9]*" #orderPhone="ngModel" [ngClass]="{ 'is-invalid': order.submitted && orderPhone.invalid }" required>
+                        <div *ngIf="order.submitted && orderPhone.invalid" class="invalid-feedback">
+                            <div *ngIf="orderPhone.errors.required">Phone is required</div>
+                            <div *ngIf="orderPhone.errors?.pattern">Phone number is invalid</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="email">Email <span class="text-danger">*</span></label>
+                    <input email ngModel name="orderEmail" class="form-control" id="email" placeholder="you@example.com" #orderEmail="ngModel" [ngClass]="{ 'is-invalid': order.submitted && orderEmail.invalid }" required>
+                    <div *ngIf="order.submitted && orderEmail.invalid" class="invalid-feedback">
+                        <div *ngIf="orderEmail.errors.required">Email is required</div>
+                        <div *ngIf="orderEmail.errors?.email">Email is invalid</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="address">Address <span class="text-danger">*</span></label>
+                    <input type="text" ngModel name="orderAddress" class="form-control" id="address" placeholder="1234 Main St" #orderAddress="ngModel" [ngClass]="{ 'is-invalid': order.submitted && orderAddress.invalid }" required>
+                    <div *ngIf="order.submitted && orderAddress.invalid" class="invalid-feedback">
+                        <div *ngIf="orderAddress.errors.required">Address is required</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="messege">Note <span class="text-muted">(Optional)</span></label>
+                    <textarea ngModel name="orderMessege" class="form-control" id="messege" placeholder="Note..."></textarea>
+                </div>
+                <hr class="mb-4">
+                <h4 class="mb-3">Payment</h4>
+                <div class="d-block my-3">
+                    <div class="custom-control custom-radio">
+                        <input id="cod" name="orderStatus" type="radio" value="processing" class="custom-control-input" checked="" (change)="onStripePayment(false)">
+                        <label class="custom-control-label" for="cod">Cash On Delivery</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="stripe" name="orderStatus" type="radio" value="paid" class="custom-control-input" (change)="onStripePayment(true)">
+                        <label class="custom-control-label" for="stripe">Stripe</label>
+                    </div>
+                    <div *ngIf="isStripe;">
+                        <input type="text" class="form-control" ngModel name="cardName" placeholder="Jane Doe" #cardName="ngModel" [ngClass]="{ 'is-invalid': order.submitted && cardName.invalid }" required>
+                        <div *ngIf="order.submitted && cardName.invalid" class="invalid-feedback">
+                            <div *ngIf="cardName.errors.required">Card Name is required</div>
+                        </div>
+                    <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Checkout</button>        
+            </div>
+        </div>
+    </form>
+</div>
+<ng-template #noItems><div class="mt-4">There's no item in cart.</div></ng-template>

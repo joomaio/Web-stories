@@ -1,0 +1,11 @@
+.badge .badge-success .badge-danger .mr-1 a{
+    color: #ffffff;
+}
+
+li a {
+    color: #2133d1;
+}
+
+table th{
+    white-space: nowrap;
+}

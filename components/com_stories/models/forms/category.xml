@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="detail" label="COM_STORIES_STORIES_DETAILS">
+		<field
+				name="id"
+				type="hidden"
+				/>
+		<field
+				name="name"
+				type="text"
+				label="COM_STORIES_NAME_LABEL"
+				description="COM_STORIES_NAME_DESCRIPTION"
+				size="300"
+				class="input-xxlarge input-large-text"
+				default=""
+				/>
+		<field
+				name="description"
+				type="textarea"
+				label="COM_STORIES_DESCRIPTION_LABEL"
+				description="COM_STORIES_DESCRIPTION_DESCRIPTION"
+				rows="30"
+				cols="200"
+				size="10000"
+				class="materialize-textarea"
+				default=""
+				/>
+	</fieldset>
+</form>

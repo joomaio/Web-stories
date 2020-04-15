@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 3.0//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
+<extension version="3.1" type="template" client="site" method="upgrade" >
+	<name>stories</name>
+	<creationDate>2020-06-02</creationDate>
+	<author>khang</author>
+	<authorEmail>khang@example.com</authorEmail>
+	<authorUrl>http://www.example.com</authorUrl>
+	<license>GNU/GPL</license>
+	<version>1.0.2</version>
+	<description>template cho web stories</description>
+	<copyright>Copyright 2013 - JoomlaTemplates.me</copyright>
+	<files>
+		<filename>index.php</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>favicon.ico</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>template_preview.png</filename>
+		<folder>html</folder>
+		<folder>css</folder>
+		<folder>language</folder>
+	</files>
+	<positions>
+		<position>menu</position>
+		<position>search</position>
+		<position>header</position>
+		<position>left</position>
+		<position>bottom</position>
+		<position>footer</position>
+	</positions>
+	<config>
+		<fields name="params">
+			<fieldset name="advanced">
+				<field 
+					name="siteName" 
+					type="text" 
+					label="TPL_STORIES_LOGO_SITENAME"
+					description="TPL_STORIES_LOGO_SITENAME" 
+					class="" 
+					default=""
+				/>
+			</fieldset>
+		</fields> 
+	</config>
+</extension>

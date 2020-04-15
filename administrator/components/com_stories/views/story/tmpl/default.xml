@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="sotry detail">
+		<message>COM_STORIES_STORY_DETAIL</message>
+	</layout>
+	<fields name="request">
+		<fieldset name="request">
+			<field 
+				name="id" 
+				type="text"
+				label="COM_CONTENT_FIELD_SELECT_ARTICLE_LABEL"
+				description="COM_CONTENT_FIELD_SELECT_ARTICLE_DESC"
+				required="true"
+				select="true"
+				new="true"
+				edit="true"
+				clear="true"
+			/>
+		</fieldset>
+	</fields>
+</metadata>

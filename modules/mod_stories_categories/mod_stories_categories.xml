@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1.0" method="upgrade" client="site">
+    <name>mod_stories_categories</name>
+    <author>khang</author>
+    <creationDate>12/2019</creationDate>
+	<copyright>Copyright (C) Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<authorEmail>admin@admin.com</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+    <version>1.0.0</version>
+    <description>Một module hiển thị các categories trong component stories</description>
+    <files>
+        <filename module="mod_stories_categories">mod_stories_categories.php</filename>
+        <folder>tmpl</folder>
+    </files>
+	<languages folder="language"> 
+		<language tag="en-GB">en-GB/en-GB.mod_stories_categories.ini</language>
+	</languages>
+    
+    <config>
+        <fields name="params">
+            <fieldset name="basic" >
+
+                <field
+					name="count"
+					type="number"
+					label="MOD_STORIES_CATEGORIES_LABEL"
+					description="MOD_STORIES_CATEGORIES_DESCRIPTION"
+					default="3"
+					filter="integer"
+				/>
+
+            </fieldset>
+        </fields>
+    </config>
+</extension>

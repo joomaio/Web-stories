@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_STORIES_STORIES_HOMEPAGE">
+		<message>COM_STORIES_STORIES_HOMEPAGE</message>
+	</layout>
+	<fields name="request">
+		<fieldset name="request">
+			<field
+				name="numCat"
+				type="number"
+				default="5"
+				label="COM_STORIES_NUMBER_CATEGORIES"
+				description="COM_STORIES_NUMBER_CATEGORIES"
+			/>
+			<field
+				name="numStories"
+				type="number"
+				default="3"
+				label="COM_STORIES_NUMBER_STORIES"
+				description="COM_STORIES_NUMBER_STORIES"
+			/>
+		</fieldset>
+	</fields>
+</metadata>

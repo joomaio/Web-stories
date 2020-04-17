@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="detail" label="COM_STORIES_STORIES_DETAILS">
+		<field
+				name="searchword"
+				type="text"
+				label="COM_STORIES_SEARCH"
+				description="COM_STORIES_SEARCH"
+				size="20"
+				maxlength="20"
+				class="form-control inline"
+				default=""
+				/>
+		<field
+				name="catid"
+				type="category"
+				extension="com_stories"
+				class="form-control inline"
+				default=""
+				
+				label="COM_STORIES_FIELD_CATID"
+				description="COM_STORIES_CATID_DESCRIPTION"
+			>
+			<option value="0">COM_STORIES_OPTION_SELECT_CATEGORY</option>
+		</field>
+		<!-- <field
+				name="from"
+				type="calendar"
+				format="%Y-%m-%d %H:%M:%S"
+				class="input-small" filter="user_utc"
+				showtime="false" todaybutton="false" filltable="false" translateformat="true"
+				label="COM_STORIES_FIELD_FROM"
+				description="COM_STORIES_FIELD_FROM"
+		/>
+		<field
+				name="to"
+				type="calendar"
+				format="%Y-%m-%d %H:%M:%S"
+				class="input-small" filter="user_utc"
+				showtime="false" todaybutton="false" filltable="false" translateformat="true"
+				label="COM_STORIES_FIELD_TO"
+				description="COM_STORIES_FIELD_TO"
+		/> -->
+	</fieldset>
+</form>

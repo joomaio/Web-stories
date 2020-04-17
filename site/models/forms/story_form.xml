@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_stories/models/rules">
+	<fieldset name="detail" label="COM_STORIES_STORIES_DETAILS">
+		<field
+				name="id"
+				type="hidden"
+				/>
+		<field
+				name="name"
+				type="text"
+				label="COM_STORIES_NAME_LABEL"
+				description="COM_STORIES_NAME_DESCRIPTION"
+				size="300"
+				class="input-xxlarge input-large-text"
+				default=""
+				/>
+		<field
+				name="catid"
+				type="category"
+				extension="com_stories"
+				class="custom-select"
+				default=""
+				label="COM_STORIES_FIELD_CATID"
+				description="COM_STORIES_CATID_DESCRIPTION"
+				required="true"
+			>
+			<option value="0">JOPTION_SELECT_CATEGORY</option>
+		</field>
+		
+		<field
+				name="content"
+				type="editor"
+				label="COM_STORIES_DESCRIPTION_LABEL"
+				description="COM_STORIES_DESCRIPTION_DESCRIPTION"
+				size="10000"
+				class="inputbox"
+				default=""
+				/>
+		<field
+				name="created_time"
+				type="hidden"
+		/>
+		<field
+				name="created_user"
+				type="hidden"
+		/>
+		<field
+				name="last_modified_time"
+				type="hidden"
+		/>
+		<field
+				name="last_modified_user"
+				type="hidden"
+		/>
+		<field
+				name="img"
+				type="file"
+				label="COM_STORIES_IMG_LABEL"
+				description="COM_STORIES_IMG_DESCRIPTION"
+				preview="tooltip"
+				dỉrectory="stories"
+				/>
+	</fieldset>
+
+	<fieldset
+			name="accesscontrol"
+			label="COM_STORIES_FIELDSET_RULES"
+	>
+    	<field
+				name="asset_id"
+				type="hidden"
+				filter="unset"
+				/>
+    	<field
+				name="rules"
+				type="rules"
+				label="COM_STORIES_FIELD_RULES_LABEL"
+				filter="rules"
+				validate="rules"
+				class="inputbox"
+				component="com_STORIES"
+				section="message"
+				/>
+    </fieldset>
+</form>
